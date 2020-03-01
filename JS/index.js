@@ -11,14 +11,14 @@ fetch("https://api.spacexdata.com/v3/launches/next")
 
 function displayNextLaunch(launch) {
     
-    const container = document.querySelector("#launch-section-homepage");
+    const container = document.querySelector("#next-launch-container");
 
     container.innerHTML = `<div>
                               <h2>Next launch</h2>
-                                  <h3>${launch.rocket.rocket_name} - ${launch.mission_name}</h3>
-                                    <p>Launch time: ${launch.launch_date_local}</p>
-                                    <p>Launch site: ${launch.launch_site.site_name_long}</p> 
-                                    <a href="launches.html">More launches</a>
+                                  <h3>${launch.mission_name} - ${launch.rocket.rocket_name}</h3>
+                                    <p><b>Launch time:</b> ${launch.launch_date_local}</p>
+                                    <p><b>Launch site:</b> ${launch.launch_site.site_name_long}</p> 
+                                    <a href="launches.html" class="button-style">More launches</a>
                          </div>`;
 }
 
@@ -41,32 +41,15 @@ function displayPeople(json) {
     const peopleDetails = document.querySelector("#people-container");
     
     peopleDetails.innerHTML = `<div>
-                                  <h3>People in space</h3>
-                                      <p>There are currently ${people.length} people in space.</p>
+                                   <h2>People in space</h2>
+                                   <p>There are ${people.length} people in space right now.</p>
+                                   <p>Want to be an astronaut and wonder what it takes?</p>
+                                   <a href="https://www.youtube.com/watch?v=4fXsAvv96Gw&feature=youtu.be" class="button-style" target="_blank">Find out</a>     
                                </div>`;
 }
 
 
-//Astronomy picture of the day
 
-fetch("https://api.nasa.gov/planetary/apod?api_key=SE0EI5G7B2vjIeO25iSjGFpTfpH0Kid63Hx9fXc5")
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(json) {
-        displayAPOD(json);
-    
-});
-
-
-function displayAPOD(apod) {
-    
-    const container = document.querySelector("#apod-container");
-
-    container.innerHTML = `<div>
-                            <img id="apod"src="${apod.url}"></img>       
-                         </div>`;
-}
 
 
 
